@@ -6,7 +6,6 @@ library(tm)
 
 # Dataset
 ds_file <- args[1]
-#ds_file <- "/home/phd/Dropbox/doutorado/data/datasets/short_text/n20_short.csv"
 ds_df <- read.csv2(file = ds_file, header = F)
 ds_df <- ds_df["V3"]
 
@@ -24,7 +23,6 @@ rm(ds_file)
 
 # Words vectors
 wv_file <- args[2]
-#wv_file <- "/home/phd/Dropbox/doutorado/data/Vectors/newsN20short_vectors_glove.txt"
 wv <- read.csv(file = wv_file, header = F, sep = " ")
 wv <- as.matrix(wv[, !(names(wv) %in% c("V1"))])
 
@@ -35,7 +33,6 @@ rm(wv_file)
 dv <- terms_tfidf %*% wv
 
 dv_file <- args[3]
-#dv_file <- "/home/phd/Dropbox/doutorado/data/docs_vecs/newsN20short_docs-vecs_glove.csv"
 
 # Save documents vectors to disk
 write.table(x = dv, file = dv_file, sep = " ", row.names = F, col.names = F)
